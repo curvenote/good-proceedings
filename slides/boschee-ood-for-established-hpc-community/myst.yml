@@ -1,0 +1,10 @@
+version: 1
+extends: ../slides.yml
+project:
+  title: Open OnDemand for an Established University HPC Community
+  authors:
+    - name: Jacob Boschee
+      affiliation: University of British Columbia
+      orcid: 0000-0003-4903-8520
+  abstract: |
+    The Advanced Research Computing department at the University of British Columbia (UBC) have been supporting a local HPC cluster for use by the entire UBC research community for nearly a decade. With a demand for more interactive computing options coming from our researchers, we have begun implementing Open OnDemand as a portal for accessing our resources and with that has come challenges around our currently existing architecture. This talk will provide a detailed, yet high-level overview of the challenges we faced and the solutions we explored. By sharing our journey, we hope to provide other system administrators with a view of both the ease of modifying Open OnDemand for current systems, as well as potential challenges to keep in mind when exploring adding Open OnDemand.
