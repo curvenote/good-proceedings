@@ -1,0 +1,10 @@
+version: 1
+extends: ../posters.yml
+project:
+  title: Using OpenOnDemand for Real-World Interdisciplinary AI Projects
+  authors:
+    - name: Gulustan Dogan
+      affiliation: University of North Carolina Wilmington
+      orcid: 0000-0003-0017-3318
+  abstract: |
+    Integrating interdisciplinary collaboration in AI courses and AI research enables students to apply AI to real-world.
