@@ -1,0 +1,13 @@
+version: 1
+extends: ../slides.yml
+project:
+  title: Try | Create | Share - Customizations with OnDemand Plugins
+  authors:
+    - name: Aday Bujeda
+      affiliation: IQSS Research Computing
+      orcid: 0009-0003-3035-0722
+  abstract: |
+    Open OnDemand has evolved to offer powerful customization features, enabling institutions to tailor their instances like never before.
+    This talk will explore how these features allow administrators and developers to create and deploy customizations easily, fostering a community-driven ecosystem of shared enhancements. Attendees will learn how to extend Open OnDemand using plugins and benefit from community contributions through practical examples, such as the metrics widget and the session card metrics developed by IQSS.
+
+    Whether you're managing an HPC environment or developing for Open OnDemand, you'll leave with practical knowledge on how to try, create, and share customizations that simplify administration and improve user experiences.
