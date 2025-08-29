@@ -1,0 +1,10 @@
+version: 1
+extends: ../slides.yml
+project:
+  title: OOD Developer Relations
+  authors:
+    - name: Emily Moffat Sadeghi
+      affiliation: Ohio Supercomputer Center
+      orcid: 0009-0009-7314-0024
+  abstract: |
+    The Developer Relations presentation at the GOOD25 conference, including community updates, technical updates, and development planning.
