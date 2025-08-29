@@ -1,0 +1,13 @@
+version: 1
+extends: ../slides.yml
+project:
+  title: 'Deploying LLM web applications on Open OnDemand: experiences at Perth Children’s Hospital'
+  authors:
+    - name: Harry Smallbone
+      affiliation: Perth Children's Hospital
+      orcid: 0009-0004-3865-5624
+    - name: Thomas Drake-Brockman
+      affiliation: Perth Children's Hospital
+      orcid: 0000-0002-7649-3951
+  abstract: |
+    Open OnDemand (OOD) is ideally placed to bridge the divide between traditional shell-based batch HPC and emerging large language model (LLM) workflows. Our team deployed OOD internally at MERLIN, a small HPC research cluster located inside Perth Children’s Hospital to provide HPC resources to a range of technical and non-technical users on sensitive healthcare data. We adapted existing LLM web applications for OOD to provide a low-code playground for non-technical researchers such as medical doctors and research assistants to engage with LLM resources in a healthcare environment. This presentation will discuss the rationale, and implementation of OOD LLM web applications in a highly restricted environment and motivate future improved support for these types of workflows within OOD.
