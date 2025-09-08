@@ -1,0 +1,20 @@
+version: 1
+extends: ../slides.yml
+project:
+  title: "Containerized Bioinformatics Applications and Pipelines on Open OnDemand"
+  authors:
+    - name: "Yucheng Zhang"
+      affiliation: "Tufts University"
+      orcid: "0000-0001-6802-009X"
+
+  abstract: |
+    Tufts University hosts a vibrant and growing bioinformatics community, 
+    many of whom are new to using the Linux command line for high-performance computing (HPC). 
+    Open OnDemand (OOD) simplifies HPC access with a user-friendly web interface, 
+    lowering barriers for researchers and students alike. At Tufts, we have deployed more than 30 bioinformatics applications 
+    and nf-core pipelines on OOD, including customized RStudio servers designed 
+    specifically for bioinformatics workflows. The nf-core pipelines allow users 
+    to execute complex workflows with minimal effort. In this presentation, we share our experiences building a custom containerized 
+    RStudio server for bioinformatics, deploying containerized applications as OOD apps, 
+    and transforming the complex command-line interfaces of nf-core pipelines 
+    into intuitive, web-based applications accessible through OOD.
