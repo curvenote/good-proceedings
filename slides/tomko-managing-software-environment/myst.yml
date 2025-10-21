@@ -1,0 +1,27 @@
+version: 1
+extends: ../slides.yml
+project:
+  title: Managing the Software Environment for a Classroom Deployment of OOD
+  authors:
+    - name: Karen Tomko
+      affiliation: Ohio Supercomputer Center
+      orcid: 0000-0002-6542-853X
+    - name: Shameema Oottikkal
+      affiliation: Ohio Supercomputer Center
+      orcid: 0009-0006-1075-4457
+    - name: Zhi-Qiang You
+      affiliation: Ohio Supercomputer Center
+      orcid: 0009-0003-4321-3911
+  abstract:
+    The Ohio Supercomputer Center (OSC) provides advanced computing solutions to researchers through a web-based interface called OSC OnDemand. During the
+    COVID-19 pandemic, we observed a significant increase in the use of OnDemand for classroom applications, particularly for tools like R and Python.
+    However, this surge highlighted challenges in creating environments that are easily shareable and reproducible to meet classroom needs. To address these
+    challenges, we customized RStudio and Jupyter Notebook and deployed them on a dedicated classroom server. This setup enables the delivery of tailored,
+    isolated software environments for each classroom, ensuring a seamless and efficient learning experience for students and instructors. Each classroom
+    environment is managed by the instructor, who can install, and update packages as needed. When students log into a course hosted on the classroom server,
+    they are provided with the custom R or Python environment configured by the instructor. This eliminates the need for students to install packages
+    themselves, ensuring consistency and reducing setup time. Additionally, these environments are isolated from other Python or R workflows the user may
+    already have in their accounts, preventing conflicts and maintaining a clean, course-specific workspace. Instructors can also easily share data and other
+    files for students to use for assignments. They have access to a student's workspace with limited permissions, allowing them to review and manage homework
+    submissions directly within the custom environment. This ensures that assignments are completed and assessed within the same controlled setup,
+    streamlining the process for both students and instructors.
