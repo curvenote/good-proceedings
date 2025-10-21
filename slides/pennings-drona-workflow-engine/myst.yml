@@ -1,0 +1,10 @@
+version: 1
+extends: ../slides.yml
+project:
+  title: Drona Workflow Engine
+  authors:
+    - name: Marinus Pennings
+      affiliation: Texas A&M University
+      orcid: 0000-0003-0932-5365
+  abstract: |
+    Overview of two OpenOnDemand apps created by TAMU HPRC. We will first provide a preview of the interactive dashboard to help researchers manage their resources on HPRC clusters. Next, we will demonstrate the Drona workflow engine, a framework designed to assist researchers in generating scientific workflows.
