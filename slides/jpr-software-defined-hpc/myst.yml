@@ -1,0 +1,24 @@
+version: 1
+extends: ../slides.yml
+project:
+  title: Software Defined HPC with Open OnDemand
+  authors:
+    - name: John-Paul Robinson
+      affiliation: University of Alabama at Birmingham, IT Research Computing
+    - name: Louis Chen
+      affiliation: University of Alabama at Birmingham, IT Research Computing
+    - name: Eesaan Atluri
+      affiliation: University of Alabama at Birmingham, IT Research Computing
+    - name: Krish Moodbidri
+      affiliation: University of Alabama at Birmingham, IT Research Computing
+  affiliations:
+    - id: uab
+      name: The University of Alabama at Birmingham
+      department: Research Computing Development Team
+  abstract: |
+     Software defined infrastructure for high-performance computing (SDHPC) can reduce user impacts during maintenance operations.
+     In our implementation, the complete system of users and resources was divided into two logical groups.
+     Based on group membership, users are exposed to only the resources associated with their group.
+     An infrastructure of application routers, deployed by continuous integration and continuous deployment (CI/CD) pipelines, route users to the appropriate gateways.
+     We demonstrate the utility of this infrastructure to our motivating use case of limiting user downtime during maintenance operations.
+     We conclude with observations on functionality and highlight future directions.
