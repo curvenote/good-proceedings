@@ -1,0 +1,54 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+extends: ../papers.yml
+project:
+  id: good-2025-simon_westersund
+  title: Scaling up OOD – A sysadmin's perspective
+  description: This paper explores how CSC – IT Center for Science analyzed performance issues and found ways to decrease the system load of their Open OnDemand instances.
+  keywords:
+    - Open OnDemand
+    - Passenger
+    - optimization
+    - user mapper
+  authors:
+    - name: Simon Westersund
+      email: simon.westersund+good25proceedings@csc.fi
+      orcid: 0009-0004-5656-729X
+      affiliations:
+        - CSC – IT Center for Science Ltd.
+      corresponding: true
+    - name: Robin Karlsson
+      orcid: 0009-0004-2824-5138
+      affiliations:
+        - CSC – IT Center for Science Ltd.
+      corresponding: false
+  abbreviations:
+    CPU: Central Processing Unit
+    HPC: High-Performance Computing
+    HTTP: Hypertext Transfer Protocol
+    N/o: Number of
+    OOD: Open OnDemand
+    pg.: page
+    PUN: Per-User Nginx
+    RAM: Random Access Memory
+    UID: User ID
+    vCPU: virtual Central Processing Unit
+    VM: Virtual Machine
+  error_rules:
+    - rule: doi-exists
+      severity: ignore
+      keys:
+        - cscfi
+        - OscUserMapping
+        - PhusionPassenger
+        - PassengerAnalyticsTiming
+        - PassengerPsCall
+        - PassengerHighestFdTimeout
+        - PassengerHighestFdFallback
+        - GreggSystemsPerformance
+        - PassengerLicense
+        - OodPackagingPr
+        - OodRelease3112
+        - OodRelease404
+        - SlurmPrivateData
+
