@@ -1,0 +1,58 @@
+version: 1
+project:
+  id: good-2025-lai
+  title: 'AlphaFold Accessibility: An Optimized Open-Source OOD App for Protein Structure Prediction'
+  authors:
+    - name: Vinay Saji Mathew
+      affiliation: industrial-engineering
+      email: vinaysmathew@psu.edu
+    - name: Matt Hansen
+      affiliation: icds
+      email: mah60@psu.edu
+    - name: Chad Bahrmann
+      affiliation: aimi
+    - name: Gretta D Kellogg
+      affiliation: aimi
+      email: gretta.kellogg@psu.edu
+    - name: William KM Lai
+      affiliations:
+        - molecular-biology-genetics
+        - computational-biology
+      email: wkl29@cornell.edu
+      corresponding: true
+  affiliations:
+    - id: industrial-engineering
+      name: Department of Industrial Engineering, Pennsylvania State University, University Park, PA 16802, USA.
+    - id: icds
+      name: Institute for Computational and Data Sciences (ICDS), Pennsylvania State University, University Park, PA 16802, USA.
+    - id: aimi
+      name: Center for Applications of AI & ML to Industry (AIMI), Pennsylvania State University, University Park, PA 16802, USA.
+    - id: molecular-biology-genetics
+      name: Department of Molecular Biology and Genetics, Cornell University, Ithaca, NY 14850, USA.
+    - id: computational-biology
+      name: Department of Computational Biology, Cornell University, Ithaca, NY 14850, USA.
+  description: |
+    AlphaFold, developed by DeepMind, has transformed structural biology by achieving unprecedented accuracy in protein structure prediction resulting in a 2024 Nobel Prize in Chemistry. Released in 2021 as open-source software, AlphaFold 2 enabled researchers worldwide to explore protein folding mechanisms and accelerate biomedical discovery. In contrast, AlphaFold 3 (released in 2024\) is not open-source and is primarily accessible through a web interface, limiting community-driven optimization and large-scale computational deployment. To improve accessibility and efficiency, we developed an open-source web-portal implementation of AlphaFold 2 & 3 that optimizes computational resource allocation by intelligently separating CPU and GPU phases within a single Open OnDemand (OOD) instance.
+  keywords:
+    - Open OnDemand modules
+    - AI optimization
+    - GPU utilization
+    - Structural Biology AI
+    - User-Friendly module design
+  abbreviations:
+    OOD: Open OnDemand
+    ICDS: Institute for Computational and Data Sciences
+    AIMI: Center for Applications of AI & ML to Industry
+    RDMA: Remote Direct Memory Access
+    MSA: Multiple Sequence Alignment
+    SSD: Solid-State Disk
+  error_rules:
+    - rule: doi-exists
+      severity: ignore
+      keys:
+        - openfold_aws
+        - nvidia_openfold_blog
+        - nvidia_mlperf_blog
+        - wohlwend_boltz
+site:
+  template: book-theme
