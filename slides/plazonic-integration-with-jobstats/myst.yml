@@ -1,5 +1,5 @@
 version: 1
-extends: ../proceedings.yml
+extends: ../slides.yml
 project:
   title: Integration of Open OnDemand with the Jobstats Job Monitoring Platform
   authors:
