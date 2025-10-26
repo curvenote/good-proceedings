@@ -1,0 +1,12 @@
+version: 1
+extends: ../slides.yml
+project:
+  title: 'Integrating MATLAB with OOD: New Tools to Boost Usage and Improve User Experience'
+  authors:
+    - name: Nick Choi
+      affiliation: MathWorks
+    - name: Lisa Kempler
+      affiliation: MathWorks
+  abstract: |
+    Join us to learn how HPC Centers and other sites are integrating MATLAB to work with cluster hardware and data portals. 
+    This session will cover tools and best practices to make MATLAB available to users on OOD as a browser-based app and as a Jupyter Notebook language plug-in, as well as available GPU and other parallel computing capabilities.
