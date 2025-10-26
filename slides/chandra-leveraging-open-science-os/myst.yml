@@ -1,0 +1,10 @@
+version: 1
+extends: ../slides.yml
+project:
+  title: Leveraging the Open Science Operating System to build virtual environments for science and education
+  authors:
+    - name: Sandeep Chandra
+      affiliation: San Diego Supercomputer Center, UCSD
+      orcid: 0000-0002-9235-6455
+  abstract: |
+    Instead of focusing on research and innovation, principal investigators and their teams are increasingly consumed by the challenge of building cyberinfrastructure that supports their research. And when too much time is spent chasing down infrastructure, software and tooling, the science suffers. Researchers who succeed are the ones who keep their focus on scientific innovation, not the technology behind it. Rather than patching together disconnected services, they invest in unified, end-to-end solutions that ensure the impact, reach, and sustainability of their work. Our services, offered as part of the Open Science Operating System, make data and computationally intensive capabilities accessible to millions of researchers, educators and students across disciplines through science gateways, secure cloud enclaves, and research software development. By prioritizing customers and innovative solutions, our team helps build strong scientific communities, improves cyberinfrastructure, accelerates research milestones, and delivers meaningful real-world impact.
