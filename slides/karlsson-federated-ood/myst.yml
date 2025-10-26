@@ -1,0 +1,19 @@
+version: 1
+extends: ../slides.yml
+project:
+  title: Federated Open OnDemand
+  authors:
+    - name: Robin Karlsson
+      affiliation: CSC - IT Center for Science Ltd.
+      orcid: 0009-0004-2824-5138
+  abstract: |
+    Some organizations, such as CSC - IT Center for Science, provide the users with
+    access to multiple supercomputers, where each of the supercomputers may have
+    completely separate instances of Open OnDemand. This leads to a fragmented user
+    experience, where the user is required to log in to another instance to access
+    another supercomputer, as well as increased time spent on maintaining multiple
+    instances. This talk targets system administrators, service owners, and other
+    persons responsible for maintaining and developing Open OnDemand instances, and
+    discusses the benefits and challenges of providing a single instance of Open
+    OnDemand, which is connected to all of the organization's supercomputers and
+    potentially even partner organizations' supercomputers.
