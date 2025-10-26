@@ -1,0 +1,19 @@
+version: 1
+extends: ../slides.yml
+project:
+  title: Integration of Open OnDemand with the Jobstats Job Monitoring Platform
+  authors:
+    - name: Josko Plazonic
+      affiliation: Research Computing, Princeton University
+      orcid: 0009-0000-6648-3568
+    - name: Jonathan D. Halverson
+      affiliation: Research Computing, Princeton University
+      orcid: 0009-0000-4877-3836
+  abstract: |
+    Given the ever increasing cost of compute (especially GPUs) it is imperative that these resources are
+    used efficiently. How can this be achieved in a simple-to-use way on a high-performance computing
+    cluster that supports a large number of diverse researchers? Our solution is Jobstats, a job
+    monitoring platform which integrates with Open OnDemand (OOD). This talk will provide an overview of
+    the platform and its various components while concentrating on its links with OOD. Our planned
+    extensions for the OOD integration will be presented with the hope of receiving feedback and new ideas
+    from attendees.
