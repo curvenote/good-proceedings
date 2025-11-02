@@ -1,0 +1,54 @@
+version: 1
+extends: ../papers.yml
+project:
+  # Update this to match `good-2025-<folder>` the folder should be `<firstname_surname>`
+  id: good-2025-harry_smallbone
+  # Ensure your title is the same as in your `main.md`
+  title: Securely exposing web services on Open OnDemand
+  # subtitle:
+  description: Add a two sentence description about your article.
+  # Authors should have affiliations, emails and ORCIDs if available
+  authors:
+    - name: Harry Smallbone
+      email: harry.smallbone@health.wa.gov.au
+      orcid: 0009-0004-3865-5624
+      corresponding: true
+      affiliations:
+        - University of Western Australia
+        - Child and Adolescent Health Service
+    - name: Thomas Drake-Brockman
+      orcid: 0000-0002-7649-3951
+      email: thomas.drake-brockman@health.wa.gov.au
+      affiliations:
+        - University of Western Australia
+        - Child and Adolescent Health Service
+        - The Kids Research Institute
+    - name: Britta Regli-von Ungern Sternberg
+      email: britta.regli-vonungern@health.wa.gov.au
+      orcid: 0000-0002-8043-8541
+      affiliations:
+        - University of Western Australia
+        - Child and Adolescent Health Service
+        - The Kids Research Institute
+  keywords:
+    - HPC
+    - containers
+    - security
+  # Add the abbreviations that you use in your paper here
+  abbreviations:
+    AI: Artificial Intelligence
+    PCH: Perth Children's Hospital
+    LLM: Large Language Model
+    IPPE: Institute for Paediatric Perioperative Excellence
+    SURE: Secure Unified Research Environment
+    TRE: Trusted Research Environment
+    HPC: High Performance Computing
+  error_rules:
+    - rule: doi-exists
+      severity: ignore
+      keys:
+        - Atr03
+        - terradesert
+        - jupyter
+        - sklearn1
+        - sklearn2
