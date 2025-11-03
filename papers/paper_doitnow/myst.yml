@@ -1,0 +1,55 @@
+version: 1
+extends: ../papers.yml
+project:
+  # Update this to match `good-2025-<folder>` the folder should be `<firstname_surname>`
+  id: good-2025-doitnow
+  # Ensure your title is the same as in your `main.md`
+  title: 'OOD Meets EESSI: Accessing and Distributing Scientific Software with Ease'
+  # subtitle:
+  description: |
+    In the High Performance Computing (HPC) space, there is a push to improve accessibil-ity and lower the entry barrier to the end users. When the end users are scientists, the goalis for them to focus on science only without dealing with the intricacies of HPC systems,which can be pretty obscure to non HPC experts.
+    Open OnDemand (OOD) is the resultof such efforts and is likely to become a standard: many supercomputers around the worldprovide it as one way to access and interact with the HPC ecosystem.
+    OOD primarily dealswith accessing HPC resources, but there is another aspect to accessibility: the availability ofscientific software.
+    Installation of scientific software is rather complex, even more for efficientand performant installations. 
+    Here the European Environment for Scientific Software Instal-lations (EESSI) project enters, providing a complete and optimized scientific software stackaccessible from many different platforms: personal workstations, cloud and supercomputers.
+    This allows users to work with the same software environment, regardless of the platform,OS, or architecture.
+    The two distinct projects, with different goals, are complementary:EESSI provides the scientific software and OOD provides the way to access the environmentto run them..
+  # Authors should have affiliations, emails and ORCIDs if available
+  authors:
+    - name: Christian Bustelo Yañez
+      email: christian.bustelo@doitnowgroup.com
+      affiliations: DIN
+    - name: Arturo Gimeno González
+      email: arturo.gimeno@doitnowgroup.com
+      affiliations: DIN
+    - name: Erica Bianco
+      email: erica.bianco@doitnowgroup.com
+      affiliations: DIN
+  affiliations:
+    - id: DIN
+      institution: DoItNow
+      department: R&D Department
+      address: Av. Meridiana, 358 - 08027 Barcelona, Spain
+      city: Barcelona
+      region: Catalonia
+      country: Spain
+      postal_code: 08027
+      phone: +34 93 1640488
+  keywords:
+    - HPC
+    - EESSI
+    - Open OnDemand
+    - Modules
+    - Scientific Software
+  # Add the abbreviations that you use in your paper here
+  abbreviations:
+    HPC: High Performance Computing
+    EESSI: European Environment for Scientific Software Installations
+    CernVMFS: CernVM File System
+  # It is possible to explicitly ignore the `doi-exists` check for certain citation keys
+  error_rules:
+    - rule: doi-exists
+      severity: ignore
+      keys:
+        - Strohmaier
+        - mxs

@@ -1,0 +1,223 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{graphicx} % Required for inserting images
+%\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage[style=ieee]{biblatex}
+\addbibresource{referencias.bib}
+
+
+\title{OOD meets EESSI: Accessing and Distributing Scientific Software with Ease}
+\date{GOOD Conference 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+%Accessing HPC enviromnents and have access to optimized scientific software installations are two main challenges in an HPC ecosystem. On the access side, Open OnDemand (OOD) ease the access to the HPC via a web browser. On the scientific software side, EESSI (European Environment for Scientific Software Installations) provides access to a curated set of scientific software installation, built to be performant by design. Integrating OOD with EESSI facilitates the access to the compute environment and the needed scientific software to the end user. Here, we show the motivation, one possible integration architecture setup, some use cases and pending challenges.
+%La gestión y distribución del software científico ha sido históricamente uno de los principales retos en entornos HPC y de investigación avanzada. Las crecientes demandas en reproducibilidad, portabilidad y eficiencia han obligado a las organizaciones a buscar soluciones más ágiles y sostenibles. En este artículo presentamos la integración entre Open OnDemand (OOD) y EESSI (European Environment for Scientific Software Installations), un enfoque que permite simplificar el acceso a software optimizado y facilitar su distribución global. Detallamos las motivaciones, la arquitectura técnica, casos prácticos de implementación y los retos pendientes, con el objetivo de inspirar a centros HPC, universidades y organizaciones de investigación a explorar este modelo.
+
+In the High Performance Computing (HPC) space, there is a push to improve accessibility and lower the entry barrier to the end users. When the end users are scientists, the goal is for them to focus on science only without dealing with the intricacies of HPC systems, which can be pretty obscure to non HPC experts. Open OnDemand (OOD) is the result of such efforts and is likely to become a standard: many supercomputers around the world provide it as one way to access and interact with the HPC ecosystem. OOD primarily deals with accessing HPC resources, but there is another aspect to accessibility: the availability of scientific software. Installation of scientific software is rather complex, even more for efficient and performant installations. Here the European Environment for Scientific Software Installations (EESSI) project enters, providing a complete and optimized scientific software stack accessible from many different platforms: personal workstations, cloud and supercomputers. This allows users to work with the same software environment, regardless of the platform, OS, or architecture. The two distinct projects, with different goals, are complementary: EESSI provides the scientific software and OOD provides the way to access the environment to run them.
+
+\end{abstract}
+
+\section{Introduction}
+Computational science and engineering have experienced a notorious growth in software complexity and computational requirements over the past decade. From biophysics and aerospace simulations to artificial intelligence workflows, the scientific community is using scientific software on HPC, and the software performance plays a key role.
+Despite the usage and complexity growth, using HPC from the scientific community still has significant limitations. These include the scarcity of specialized HPC support teams personnel, the diversity of hardware architectures, and the fast release pace for new applications. 
+
+On top of this, maintaining an optimized scientific software appstack has two  main levels of complexity. On the one hand, the HPC systems are no longer homogeneous and have increased hardware diversity \citep{Strohmaier}. Architectures such as AMD Zen, Arm (Neoverse, A64FX, Graviton), and even RISC-V are entering production, accompanied by their new vector extensions, cache configurations, and execution back-ends. 
+On the other hand, the variety of specialized scientific application software is increasing at a very fast pace (30k only at \cite{Ison2019}). Many of them have strict build requirements, specific dependency versions, and environment configurations that can vary significantly depending on the CPU architecture, making it difficult to reproduce the installation \citep{Taschuk2017}.
+
+In addition, researchers and developers have diversified the infrastructure on which they run their workloads: HPC, workstations, virtual environments, containers, and cloud services. This introduces additional requirements for portability, compatibility with multiple Linux distributions, and consistency across the different environments \citep{Droge2023,OCais2025,Bhattacharya2022}. 
+
+Together, the heterogeneity of HPC systems and the differentiation of infrastructures make it suboptimal, if not impossible, to individually install and maintain multiple optimized versions of the same software for each system or architecture.  This practice consumes a significant amount of time, thus increasing operating costs and introducing inconsistencies that compromise the reproducibility of scientific workloads \citep{Taschuk2017}.
+
+One possible solution to this issue is EESSI \citep{Droge2023}, the European Environment for Scientific Software Installations. EESSI was developed under \textbf{MultiXcale Centre-of-Excellence} \citep{mxs}, a 4-year European project with the idea of being a step forward over the traditional approach of “installation recipes” (such as EasyConfigs in EasyBuild \citep{Hoste2012} or Spack \citep{Gamblin2015} packages) with real binaries, already optimized and packaged, distributed through a scalable infrastructure and accessible through a module loading system.
+
+On the other side of the terminal, there are the end-users, who need to use the resources and the scientific applications to run their workflows. The use of HPC clusters has traditionally been associated with the domain of complex command-line tools, editors such as \texttt{vim} or \texttt{nano}, queue managers such as \texttt{Slurm} or \texttt{PBS}, and environment modules that lack of user friendly configuration structures. Although this approach is natural for Unix-savvy users, it represents a significant entry barrier for researchers, students, or professionals from other disciplines. This entry barrier makes it difficult for end users to access the HPC and HPC-like environment \citep{Chalker2024}, increasing the load on HPC support teams.
+
+To lower the entry barrier to the HPC environment a possible solution is Open OnDemand (OOD), a web access platform developed by Ohio Supercomputer Center (OSC) which provides a modern, intuitive, and extensible graphical interface to make it easier to work with HPC resources \citep{Chalker2024}. OOD has been adopted by numerous supercomputing centers around the world as a solution to reduce access complexity and promote efficient use of available infrastructure.
+
+\section{Integrating EESSI with Open OnDemand}
+
+The integration between EESSI and OOD solves two of the main problems in HPC: end-users access to the environment and the HPC support teams management of scientific software installations.
+
+\subsection{Motivation}
+
+Although Open OnDemand solves the access problem, it still depends on the availability and quality of the software environment on the compute nodes. This is where EESSI comes in as a perfect complement: while OOD is responsible for providing a modern interface for accessing HPC, EESSI ensures that the available software is consistent, optimized, and portable.
+
+Integrating EESSI as a source of modules within OOD applications, you obtain multiple benefits :
+
+\begin{itemize}
+    \item \textbf{Ready-to-use environments:} Each OOD application can be configured to automatically load modules from EESSI, eliminating the need for local installations.
+    \item \textbf{Total reproducibility:} Users get the same stack on any cluster using OOD + EESSI, avoiding “It works on my machine” issues.
+    \item \textbf{Faster deployments:} The time between defining a new app on the portal and having it up and running is reduced to minutes.
+    \item \textbf{Reduced maintenance:} Administrators do not need to recompile software, just mount CVMFS and configure environment modules.
+    \item \textbf{Global scalability:} Training, courses, or distributed workflows can use the exact same stack no matter where they run.
+\end{itemize}
+
+Individually, both EESSI and OOD offer features that can improve the HPC experience of the end-user and their support teams. Together and integrated they also boost efficiency, scalability, and reproducibility. Their integration sums up their feature making the support and end user experience smoother.
+
+The combination of these advantages not only improves the end-user experience but also frees the operative capacity on the technical teams.
+
+\subsection{Architecture of integration}
+
+From a technical point of view, our integration between OOD and EESSI is simple, not intrusive, and transparent to the end user. The behaviour of the integration is the following:
+The end user will access the OOD portal and select one or more modules to be loaded, in the backend OOD submits an interactive job and loads EESSI, along with the selected module(s), during the initialization of the environment. 
+The end user will then have access to a GUI environment with the requested module(s) loaded from EESSI. 
+\begin{enumerate}
+    \item The user accesses to the OOD portal throught a browser.
+    \item From the interactive application interfaces, selects the desired modules to load. 
+    \item OOD launches an interactive job (usually via Slurm) to a compute node, loading the selected module(s).
+    \item On the compute node, during the initialization of the environment, the OOD backend loads EESSI software repository using CernVM-FS:
+    
+    \begin{verbatim}
+    source /cvmfs/software.eessi.io/versions/2023.06/init/bash
+    \end{verbatim}
+
+    \item Next, the application needed modules are loaded.    
+    \item The user starts working on a functional environment, identical to any other HPC center that uses EESSI.
+\end{enumerate}
+
+This process does not require any administrator privileges on the execution node, neither local installations of heavy software. 
+
+\subsection{Key integration points}
+
+There are several levels in which OOD and EESSI interact in an effective way:
+
+\begin{itemize}
+    \item \textbf{CVMFS mounted on the compute nodes:} Allows access to optimizated binaries from EESSI in an inmediatly and efficient way.
+    \item \textbf{Application templates from OOD:} The initialization scripts can include the automatic load of the EESSI modules, depending on the type of work (GUI, notebook, shell, batch).
+    \item \textbf{Customization vía YAML:} Each app can determine it's own software dependencies as part of the initialization process.
+    \item \textbf{Alignment with detected architecture:} Thanks to tools like \texttt{archdetect}, EESSI selects the optimum subdirectory from the stack, taking in account the available CPU.
+\end{itemize}
+
+\subsection{Recommended use scenarios}
+
+The integration is particularly useful on the following scenarios:
+
+\begin{itemize}
+    \item \textbf{Centers with multiple clusters:} In which the goal is to unify the software stack accessible from all the systems.
+    \item \textbf{Remote trainings:} Allowing dozens of users accessing the same environment preventing any possible breach on the working systems.
+    \item \textbf{Distributed projects:} In which it is mandatory the exact reproducibility of the results within institutions.
+    \item \textbf{Cloud clusters:} Mounting EESSI via CVMFS is more efficient than maintaining container images for each software.
+
+    \item \textbf{Human resources optimization:} Centers in which the goal is to minimize the time wasted of technicians on installation and maintainment of software.
+\end{itemize}
+
+\subsection{Operative advantages}
+
+From the technical/operational point of view, this hybrid architecture offers clear benefits:
+
+\begin{itemize}
+    \item The need of maintaining local module trees is removed.
+    \item The incidents of having multiple environments is reduced.
+    \item The time spent on deploying new software or versions is reduced.
+    \item Enables a new model of collaboration between different centers with the same stack.
+    \item The need of installing or compiling new software is mostly removed.
+\end{itemize}
+
+\bigskip
+
+Altogether, the combination OOD + EESSI allows scaling the use of scientific software and brings a sustainable and collaborative model for the access to HPC resources.
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+
+\section{Possible use cases}
+
+The integration between OOD and EESSI can have an impact on current HPC usage, for example in education and trainings, software validation, and collaboration between centers. Right below there are presented three key areas where this combinations will make the difference: formations, software validations and collaborations between centers.
+
+\subsection{Education and workshops}
+
+One of the most immediate applications of OOD + EESSI is the preparation of environments for technical training, both in universities and in research centers or business training programs.
+
+Historically, delivering hands-on HPC software workshops involved using the client's or hosting center's own cluster. This can have some disadvantages:
+
+\begin{itemize}
+    \item Usually, clusters are in production and is not always possible to reserve the resources for educational propouses.
+    \item Specific installations for the workshop can conflict with already installed versions in the cluster.
+    \item Previous configuration can last days, including requests to the support team to open ports, building and installing software.
+    \item Some users may not have an account on the cluster, if the workshop is for multiple users (+100) the onboarding process can be slow.
+\end{itemize}
+
+With EESSI + OOD, it is possible to prepare an educative and clean environment on the cloud within hours. The process would be the following:
+
+\begin{enumerate}
+    \item A temporary cluster is launched in AWS, Azure or GCP, using base images with OOD preinstalled.
+    \item EESSI is mounted via CVMFS on the compute nodes, skipping the need of installing any software locally.
+    \item The needed applications in OOD are defined (ex. Jupyter, VNC Desktop with GROMACS, interactive shell, etc.).
+    \item Participants can access via web browser, without the need of configuring SSH or installing software on their laptops.
+\end{enumerate}
+
+This approach also allows the cluster to be eliminated at the end of the course, optimizing costs and avoiding under used systems.
+
+\subsection{Development and software validation}
+
+Another scenario where OOD + EESSI offers a differential value is in the development of scientific software and its validation in different architectures.
+
+A development team may need to test their application (e.g., a new GROMACS plugin or quantum simulation code) in multiple environments: Intel Haswell, AMD Zen2, ARM Neoverse, etc. Manually preparing these environments often involves the access to multiple physical or virtual systems and building from scratch in every micro-architecture.
+
+Thanks to EESSI, the same code can be run on different systems with the same software compiled specifically for each architecture simply by loading the corresponding module. This allows to:
+
+\begin{itemize}
+    \item Compare of performance between versions or architectures (benchmarking).
+    \item Verify the compatibility with different toolchains.
+    \item Execute validation pipelines from CI/CD platforms (like GitLab CI or Jenkins) with nodes with EESSI installed.
+\end{itemize}
+
+Combined with OOD, developers can quickly access each environment from the browser, load the desired module, run their tests or graphical validations, and document results with minimal effort. This is especially useful for developers who are not part of the cluster support team and require stable environments without relying on manual installation.
+
+\subsection{Comparison between centers and collaborative research}
+
+Collaboration between HPC centers, universities, and international projects raises a classic challenge: how to ensure that researchers work with consistent environments. A lack of consistency between installed versions, build configurations, or even the way modules are loaded can lead to subtle errors that compromise the validity of results.
+
+EESSI solves this problem by offering an unified, globally distributed, and versioned stack. When two different centers mount EESSI via CVMFS, both have exactly the same set of modules, with the same paths, configurations, and underlying binaries.
+
+If both centers also use Open OnDemand as an access interface, the collaboration process is greatly simplified:
+
+\begin{itemize}
+    \item Differences on the base OS (CentOS, Rocky, Ubuntu) no longer impact on the execution environment.
+    \item Trainings and workshops can be done without the need to manually align software versions.
+    \item Administrators can coordinate to try new software versions in a collaborative way.
+\end{itemize}
+
+The adoption of EESSI as a common basis has made it possible to avoid conflicts in projects and the use of OOD has simplified the execution approach.
+
+Summarizing, sharing the software stack with EESSI and enabling its universal use through OOD transforms scientific collaboration from a complex technical process to a fluid, consistent, and results-focused experience.
+
+\section{Conclusions}
+
+Integrating Open OnDemand and EESSI is a significant leap in the way HPC environments can be deployed, managed, and used. First of all, OOD democratize the access to the HPC, making it easier for the end-users to access, using a browser, and without them having HPC knowledge. On the other hand, EESSI provide a set of optimized scientific software applications, shared and reproducible, that can adapt to distinct OS, architectures and operative scenarios. Together they improve the end-user and sysadmin experience by easing the use and management of the HPC environment (both on prem and in the cloud).
+
+The support teams effort dedicated to grant access and install scientific software is then reduced (duplicated effort is also avoided). Instead of this it can be redirected, for example, to optimize the HPC system and the end-users workflows.
+
+The end-user can focus on the tasks to perform and avoid, if they do not want to, the time to learn basic HPC to be able to access it and submit their workflows. Moreover, there is virtually no waiting time from when a software version is requested and when this is accessible (if already present in EESSI).
+
+Both OOD and EESSI are open-source projects. The contribution of the community can improve both projects for the rest of the community and solution to common problems can be found from within the community, or collaboratively sorted out accelerating science and productivity.
+
+In summary, the combination of both technologies allows to:
+\begin{enumerate}
+     \item Ease the HPC scientific application access and usage from not-savvy end-users 
+     \item Reduce the users support workload, including avoid duplicated work on installing scientific software
+     \item Increase reproducibility and environment coherency when reproducing analyses 
+     \item Ease training and workshop by improving temporal cloud deployments 
+     \item Foster the collaboration between institutions, even with different infrastructure on prem. 
+\end{enumerate}
+
+\section{Acknowledgement}
+The authors would like to acknowledge the EESSI  and OOD communities who have contributed to the development and the life of both platforms in the past months and years.
+
+
+\printbibliography
+
+
+
+\end{document}
