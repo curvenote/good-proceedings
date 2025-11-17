@@ -1,0 +1,14 @@
+version: 1
+extends: ../slides.yml
+project:
+  title: "Enhanced HPC Workforce Development: Overcoming the 'Blinking Cursor' Barrier with Open OnDemand and projectEUREKA"
+  authors:
+    - name: Je'aime H. Powell
+      affiliation: Omnibond Systems
+      orcid: 0000-0003-1377-5422
+  abstract: |
+    The implementation of High-Performance Computing (HPC) workforce development initiatives involves the training of students, faculty, researchers, and professionals on common tools and methods utilized within the community. An early barrier often encountered is the "blinking cursor" found on the terminal or command window. These early challenges can deter or distract from early practitioners incorporating domain specific knowledge towards problems. In short, the tool or more apropos, access and/or use of the tool becomes the problem.
+
+    The integration of Open OnDemand within the projectEUREKA platform, used for authentication and launching common applications, successfully mitigated this "blinking cursor" barrier for 18 groups of MSI undergraduates and faculty participating in cyberinfrastructure-targeted workforce development hackathons. These time-bounded events were designed to address the skills gap in the HPC field, offering intensive training sessions in applied HPC skills that brought together students, mentors, and industry experts, as developed in the HackHPC Model. 
+
+    The presentation, aimed at educators and trainers utilizing HPC resources, will elucidate the distinctions between traditional terminal/CLI-based and web-GUI-based training methodologies/curricula employed for participant onboarding. Furthermore, it will examine the evolutionary trajectory of these pedagogical approaches over time, providing valuable insights for optimizing HPC education and training strategies. Furthermore, modified outcomes and artifacts produced by the participants will be discussed. Attendees will take away methods to utilize Open OnDemand coupled with cyberinfrastructure technology to better provide on-ramping of HPC resources for students, faculty, and professionals.
